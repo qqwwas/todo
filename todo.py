@@ -1,19 +1,19 @@
 #To do list
 import time
 
-
+tasks = open('tasks.txt','a')
 def main():
-	tasks = open('tasks.txt','a')
 	menuSelection = menu()
 
 	while menuSelection != 4:
+		
 		if menuSelection == 1:
 			enterTask()
-
+			menuSelection = menu()
 
 
 def menu():
-	print('Menu:\n')
+	print('\nMenu:')
 	print('1. Enter a task')
 	print('2. Delete a task')
 	print('3. View tasks')
@@ -22,7 +22,17 @@ def menu():
 	return menuSelection
 
 def enterTask():
-	task = input('Enter task.\n> ')
+	proceed = 'y'
+	
+	while proceed == 'y':
+		task = input('Enter task.\n> ')
+		tasks.write(str(task) + '\n')
+
+		proceed = input('Enter another task? (y/n): ')
+	print('Saved tasks!\n')
+
+def deleteTask():
+	
 
 
 
